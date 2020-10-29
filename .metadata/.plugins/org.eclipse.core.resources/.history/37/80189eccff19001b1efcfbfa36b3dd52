@@ -54,9 +54,9 @@ public class JDBCmainClass {
 		
 		for(Object rr:AL)
 		{
-			System.out.println(rr); 
+			
 		}
-		
+		System.out.println(AL+"\n"); 
 	 
 		con.close();  
 		}catch(Exception e){ System.out.println(e);}  
