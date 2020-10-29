@@ -1,0 +1,10 @@
+package com.JDBCmethod;
+
+public class JDBCmainClass {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

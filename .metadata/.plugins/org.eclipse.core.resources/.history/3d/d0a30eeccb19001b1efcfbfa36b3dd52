@@ -1,0 +1,60 @@
+package com.JDBCmethod;
+
+
+import java.sql.*;
+
+public class JDBCmainClass {
+	Connection con;
+	
+	void ConnectionStringMethod()
+	{
+		
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");  
+			  con=DriverManager.getConnection(  
+			"jdbc:mysql://localhost:3306/db_student","root","1234"); 
+			
+		} catch (Exception e) {
+			
+			 System.out.println("Exception at ConnectionString Method WIth Error Msg : "+e);
+			 
+		}
+	
+	}
+
+	public static void main(String[] args) {
+
+		JDBCmainClass JC=new JDBCmainClass();
+	 	  
+				try{  
+					 
+					//here test_schema is database name, root is username and password is 1234 
+					//Ref URL :https://www.javatpoint.com/example-to-connect-to-the-mysql-database 
+					int id=6;
+				String S_firstname="Guddu Gooo";
+//					String S_lastname="M";
+//					long S_phno=998899;
+//					
+				//	String query="insert into tb_studentdetails values(?,?,?,?)";
+				//	String query="delete from   tb_studentdetails  where id=(?)";
+					String query="update     tb_studentdetails set S_firstname=(?)  where id=(?)";
+					PreparedStatement stmt=JC.con.prepareStatement(query); 
+					
+		 		stmt.setString(1,S_firstname);
+		 		stmt.setInt(2,id);
+//					stmt.setString(3,S_lastname);
+//					stmt.setLong(4,S_phno);
+					int count =stmt.executeUpdate();  
+					 
+					System.out.println(count+" rows Affected");  
+					JC.con.close();  
+					}catch(Exception e){ System.out.println(e);}  
+				 
+	 
+
+
+
+
+	}
+
+}
