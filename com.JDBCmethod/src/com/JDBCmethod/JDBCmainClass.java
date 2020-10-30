@@ -64,7 +64,7 @@ public class JDBCmainClass {
 		 
 	 
 	
-	void InsertDataMethod(int id,String S_firstname,String S_lastname,long S_phno)
+	void InsertDataMethod(int id,String S_firstname,String S_lastname,long S_phno,String Email)
 	{
 		
 		try{  
@@ -74,7 +74,7 @@ public class JDBCmainClass {
 			//Ref URL :https://www.javatpoint.com/example-to-connect-to-the-mysql-database 
 			 
  		
-		 	String query="insert into tb_studentdetails values(?,?,?,?)";
+		 	String query="insert into tb_studentdetails values(?,?,?,?,?)";
 		//	String query="delete from   tb_studentdetails  where id=(?)";
 			//String query="update     tb_studentdetails set S_firstname=(?)  where id=(?)";
 			PreparedStatement stmt= con.prepareStatement(query); 
@@ -83,6 +83,7 @@ public class JDBCmainClass {
  		stmt.setString(2,S_firstname);
  			stmt.setString(3,S_lastname);
  			stmt.setLong(4,S_phno);
+ 			stmt.setString(5,Email);
 			int count =stmt.executeUpdate();  
 			 
 			System.out.println(count+" rows Affected");  
@@ -155,10 +156,12 @@ public class JDBCmainClass {
 			boolean isConnection=JC. ConnectionStringMethod();
 			if(isConnection==true)
 			{
-			 JC. GetDataMethod();
+			 
 				// JC. UpdateDataMethod("Guddu Bad",6);
 			//JC. DeleteDataMethod(7);
-			//JC. InsertDataMethod(7,"Patel","Sin",998822);
+			 JC. InsertDataMethod(7,"Patel","Sin",998822,"Patel@gmail.com");
+				
+				//JC. GetDataMethod();
 			}
 			
 			else
